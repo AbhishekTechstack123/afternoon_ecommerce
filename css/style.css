@@ -6,10 +6,16 @@
 	margin:10px;
 }
 
-table{
-	border:solid;
+.signup-err{
+	color:red;
 }
 
-td{
+.product-box{
+	min-height:300px;
+	width:300px;
+	border: 2px solid black;
 	padding:10px;
+}
+.product-box img{
+	width:250px;
 }
