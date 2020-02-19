@@ -11,10 +11,11 @@
 	$repass = $_POST["repass"];
 	$hashpass = md5($pass);
 
-	$query = "INSERT INTO `users`(`Name`, `Email`, `Phone`, `Address`, `password`) VALUES ('$name', '$email', '$phone','$address','$hashpass')";
+	$query = "INSERT INTO `users`(`Name`, `Email`, `Phone`, `Address`, `password`,`role`) VALUES ('$name', '$email', '$phone','$address','$hashpass',2)";
 	if(mysqli_query($conn,$query)){
 		$_SESSION["login_status"] = 1;
 		$_SESSION["username"] = $name;
+		$_SESSION["role"] = 2;
 		header("Location: ../index.php?err=Signup successful!");
 	}
 	else{

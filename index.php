@@ -11,6 +11,9 @@ else {
 	$error_msg = '';
 }
 
+$category_query = "SELECT DISTINCT category FROM `products`";
+$result = mysqli_query($conn,$category_query);
+
 
 
  ?>
@@ -27,9 +30,9 @@ else {
 	<link rel="stylesheet" href="css/style.css">
 
     <title>Trendy</title>
+
   </head>
   <body>
-
 
   	<div class="container-fluid">
   		<div class="row">
@@ -47,10 +50,21 @@ else {
 					      <li class="nav-item">
 					        <a class="nav-link" href="#">Contact</a>
 					      </li>
+					      
+					      	<?php 
+						if(isset($_SESSION["role"]) && $_SESSION["role"] == 1){
+								echo '<li>
+									<a class="nav-link" href="admin.php">Admin</a>
+					      			</li>';
+								}
+
+					      	 ?>
+					      	
+					      	
 					      <li class="nav-item">
 					      	<?php 
 
-					      	if(isset($_SESSION["loginstatus"]) ){
+					      	if(isset($_SESSION["login_status"]) ){
 					      		$uname = $_SESSION["username"];
 					      		echo 'Welcome '."$uname";
 					      		echo '<a href="files/logout.php">Logout</a>';
@@ -69,9 +83,18 @@ else {
   		<div class="row mt-5">
 			<div id="categories" class="col-sm-3 border border-right">
 				<ul>
-					<li category="SHIRT">Shirts</li>
-					<li category="SHOES">Shoes</li>
-					<li category="JACKET">Jackets</li>
+				<?php 
+					
+					if($result){
+						while($row = mysqli_fetch_assoc($result)){
+			
+	echo '<li class="showcat" category="'.$row["category"].'">'.$row["category"].'</li>';
+						}
+					}
+
+
+
+				 ?>
 				</ul>
 			</div>
 
@@ -84,6 +107,7 @@ else {
 				</div>
 				
 			</div>
+			<div class="col-sm-8 showproducts"></div>
   		</div> <!-- row -->
   	</div>
 
@@ -141,17 +165,17 @@ else {
         </button>
       </div>
       <div class="modal-body">
-  			<form>
+  			<form action="files/login.php" method="POST">
   				<div>
   					<label>Email:</label>
-					<input type="email" placeholder="Email">
+					<input type="email" placeholder="Email" name="loginemail">
   				</div>
   				<div>
   					<label>Password:</label>
-					<input type="password" placeholder="Password">
+					<input type="password" placeholder="Password" name="loginpassword">
   				</div>
   				<div>
-  					<input type="button" value="login">
+  					<input type="submit" value="login">
   				</div>
   				<span class="form-toggle">New user? signup instead</span>
 

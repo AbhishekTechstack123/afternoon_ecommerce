@@ -26,29 +26,47 @@ $(document).ready(function(){
 
 	});
 
-	$("#categories ul li").click(function(){
+	// $("#categories ul li").click(function(){
 
-		var cat = $(this).attr("category");
+	// 	var cat = $(this).attr("category");
 
-		.ajax({
-            type: "POST",
-            url: "your url with method that accpects the data",
-            dataType: "json",
-            data: {
-                o: objectDataString
-            },
-            success: function (data) {
-               alert('Success');
-
-            },
-            error: function () {
-             alert('Error');
-            }
-        });
-        
+	
+ //      	});
 
 
-	});
+ $("#add_product_btn").click(function(){
+ 	var frm = $("#add_product_form");
+ 	// var custom_data = {"name":"Kundan","price":1000}
+ 	$.ajax({
+ 		type:frm.attr("method"),
+		url:frm.attr("action"),
+		data:frm.serialize(),
+		success:function(data){
+			 	console.log(data);
+			 	$(".res_msg").html(data);
+		}
+ 	});
+
+
+ });
+
+
+ $(".showcat").click(function(){
+ 	var cat  = $(this).attr("category");
+ 	// alert(cat);
+ 	$.ajax({
+ 		type:"POST",
+		url:"files/category.php",
+		data:{"target":cat},
+		success:function(data){
+			 	// console.log(data);
+			 	$(".showproducts").html(data);
+		}
+ 	});
+
+ });
+
+	
 
 
 
