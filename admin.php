@@ -32,6 +32,7 @@ if(isset($_SESSION["login_status"]) ){
 		<input type="text" placeholder="Product Name" name="pname">
 		<input type="text" placeholder="Price" name="pprice">
 		<input id="add_product_btn" type="button" value="Add Product">
+		<input type="hidden" name="add_product" value="1">
 		<div class="res_msg"></div>
 </form>
 

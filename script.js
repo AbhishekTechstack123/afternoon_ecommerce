@@ -56,17 +56,27 @@ $(document).ready(function(){
  	// alert(cat);
  	$.ajax({
  		type:"POST",
-		url:"files/category.php",
-		data:{"target":cat},
+		url:"files/action.php",
+		data:{"target":cat,"action_type":"category"},
 		success:function(data){
-			 	// console.log(data);
-			 	$(".showproducts").html(data);
+			 	data = JSON.parse(data);
+			 	$("#catproducts").html("");
+			 	data.forEach(function(val){
+			 		$("#catproducts").append('<div class="col-sm-4"><div class="product-box mb-4"><img src="images/shirt1.jpg" alt=""><p class="pname"></p>'+val.Name+'<p class="psize">'+val.size+'</p><p class="pprice">'+val.price+'</p></div></div>');
+			 	});
+
 		}
  	});
 
  });
 
 	
+	// $("#productexample input").on("change",function(){
+
+
+	// 	alert("hello");
+
+	// });
 
 
 

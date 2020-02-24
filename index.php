@@ -81,7 +81,7 @@ $result = mysqli_query($conn,$category_query);
   			</div>
   		</div> <!-- row -->
   		<div class="row mt-5">
-			<div id="categories" class="col-sm-3 border border-right">
+			<div id="categories" class="col-sm-2 border border-right">
 				<ul>
 				<?php 
 					
@@ -91,24 +91,31 @@ $result = mysqli_query($conn,$category_query);
 	echo '<li class="showcat" category="'.$row["category"].'">'.$row["category"].'</li>';
 						}
 					}
-
-
-
 				 ?>
 				</ul>
+				<!-- <form id="productexample" action="xyz.php" method="POST">
+					<input type="checkbox" name="products" value="SHIRTS">Shirts
+					<input type="checkbox" name="products" value="SHOES">Shoes
+					<input type="checkbox" name="products" value="JACKETS">Jackets
+					<input type="checkbox" name="products">Ties
+					<input type="submit">
+				</form> -->
 			</div>
 
-			<div class="col-sm-8">
-				<div class="product-box">
+			<div class="col-sm-10">
+				<div id="catproducts" class="row">
+					
+				</div>
+			<!-- 	<div class="product-box">
 					<img src="images/shirt1.jpg" alt="">
 					<p class="pname">Black Shirt</p>
 					<p class="psize">M</p>
 					<p class="pprice">2000</p>
-				</div>
+				</div> -->
 				
 			</div>
-			<div class="col-sm-8 showproducts"></div>
-  		</div> <!-- row -->
+<!-- 			<div class="col-sm-8 showproducts"></div>
+ -->  		</div> <!-- row -->
   	</div>
 
 
@@ -165,7 +172,7 @@ $result = mysqli_query($conn,$category_query);
         </button>
       </div>
       <div class="modal-body">
-  			<form action="files/login.php" method="POST">
+  			<form action="files/action.php" method="POST">
   				<div>
   					<label>Email:</label>
 					<input type="email" placeholder="Email" name="loginemail">
@@ -175,7 +182,7 @@ $result = mysqli_query($conn,$category_query);
 					<input type="password" placeholder="Password" name="loginpassword">
   				</div>
   				<div>
-  					<input type="submit" value="login">
+  					<input type="submit" value="login" name="loginsubmit">
   				</div>
   				<span class="form-toggle">New user? signup instead</span>
 

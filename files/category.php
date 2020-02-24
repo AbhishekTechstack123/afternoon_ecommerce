@@ -7,10 +7,14 @@ $target = $_POST["target"];
 
 $query = 'SELECT * FROM products WHERE category = "'.$target.'"';
 $result = mysqli_query($conn,$query);
-while($row = mysqli_fetch_assoc($result)){
 
-	print_r($row);
+$response = array();
+
+while($row = mysqli_fetch_assoc($result)){
+	array_push($response,$row);
 }
+
+echo json_encode($response);
 
 
  ?>
