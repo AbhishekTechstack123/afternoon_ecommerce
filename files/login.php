@@ -16,6 +16,7 @@ if($result){
 	$_SESSION["login_status"] = 1;
 	$_SESSION["username"] = $name;
 	$_SESSION["role"] = $row["role"];
+	$_SESSION["user_id"] = $row["id"];
 	header("Location: ../index.php?err=Login successful");
 }
 else{

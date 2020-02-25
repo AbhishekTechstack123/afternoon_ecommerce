@@ -10,7 +10,6 @@ if(isset($_SESSION["login_status"]) ){
 	header("Location: index.php");
 }
 
-
  ?>
 
 <!DOCTYPE html>
@@ -27,13 +26,35 @@ if(isset($_SESSION["login_status"]) ){
 	<div>
 		<?php echo $nav; ?>
 	</div>
-<form id="add_product_form" action="files/action.php" method="POST">
+<form id="add_product_form" action="files/action.php" method="POST" enctype="multipart/form-data">
 		
 		<input type="text" placeholder="Product Name" name="pname">
+		<select name="category">
+			<option value="SHIRT">Shirt</option>
+			<option value="SHOES">Shoe</option>
+			<option value="JACKET">Jacket</option>
+		</select>
+		<select name="size">
+			<option value="XS">XS</option>
+			<option value="S">S</option>
+			<option value="M">M</option>
+			<option value="L">L</option>
+			<option value="XL">XL</option>
+		</select>
+		<input type="text" name="color" placeholder="color">
 		<input type="text" placeholder="Price" name="pprice">
-		<input id="add_product_btn" type="button" value="Add Product">
+		<input type="file" name="image">
 		<input type="hidden" name="add_product" value="1">
+		<div style="margin-top:20px;">
+					<input id="add_product_btn" type="button" value="Add Product">
+
+		</div>
 		<div class="res_msg"></div>
+	
+	<ul>
+
+	</ul>
+		
 </form>
 
 

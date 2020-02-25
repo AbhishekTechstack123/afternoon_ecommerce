@@ -16,6 +16,7 @@
 		$_SESSION["login_status"] = 1;
 		$_SESSION["username"] = $name;
 		$_SESSION["role"] = 2;
+		$_SESSION["user_id"] = mysqli_insert_id($conn);
 		header("Location: ../index.php?err=Signup successful!");
 	}
 	else{
